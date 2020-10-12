@@ -1,7 +1,7 @@
 # 3.5 Edition Feat Progression Chart
 
 ## About
-    This project is to make a simple program in C++ which would make a Progression Tree for the Feats mechanic in Dungeons and Dragons Edition 3.5. This would achieve this by parsing a Comma-Separated Values document and outputting script that would make a UML diagram linking the Feats to their prerequisite Feats.
+This project is to make a simple program in C++ which would make a Progression Tree for the Feats mechanic in Dungeons and Dragons Edition 3.5. This would achieve this by parsing a Comma-Separated Values document and outputting script that would make a UML diagram linking the Feats to their prerequisite Feats.
 
 ## How
 * Completing the spreadsheet by manually reading 3.5 Edition publications
