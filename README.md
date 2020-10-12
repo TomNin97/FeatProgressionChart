@@ -17,5 +17,5 @@ This project is to make a simple program in C++ which would make a Progression T
 
 ## Sources of 3.5 Edition Publication Lists
 * [Reddit Thread](https://www.reddit.com/r/DnD/comments/3d2ptm/complete_list_of_dnd_35_source_books/)
-* [Limited Downloadable Library](www.fillinsheets.com/pdfs/indexco.htm)
+* [Limited Downloadable Library](http://www.fillinsheets.com/pdfs/indexco.htm)
 * [List a Friend (& Experienced DM) Uses](http://dnd.arkalseif.info/rulebooks/editions/index.html)
