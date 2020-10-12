@@ -13,9 +13,9 @@ This project is to make a simple program in C++ which would make a Progression T
 * Create and write to file
   * Iterate through vector and input into script
 
-## [The Spreadsheet of Feats](www.google.com)
+## [The Spreadsheet of Feats](https://docs.google.com/spreadsheets/d/1vyK6-p1zFmnogHBwQxzuOMt28dXvX11lcSF1YFZkCqw/edit?usp=sharing)
 
 ## Sources of 3.5 Edition Publication Lists
 * [Reddit Thread](https://www.reddit.com/r/DnD/comments/3d2ptm/complete_list_of_dnd_35_source_books/)
 * [Limited Downloadable Library](www.fillinsheets.com/pdfs/indexco.htm)
-* [List a Friend (& Experienced DM) Uses](www.google.com)
+* [List a Friend (& Experienced DM) Uses](http://dnd.arkalseif.info/rulebooks/editions/index.html)
