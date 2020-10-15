@@ -7,7 +7,7 @@ This project is to make a simple program in C++ which would make a Progression T
 * Completing the spreadsheet by manually reading 3.5 Edition publications
 * Making the program read in Feats from CSV file
   * Placing information into a Feat structure
-* Verifying doubles of Feats do not exist (Notify user of source publications and ask them which to keep)
+* Verifying doubles of Feats do not exist (Notify user of source publications, verify they are same, request which description to use)
 * Seperate Feat prerequisites from other prerequisites 
 * Removing duplicate feat prerequisites that may occur between one feat and another prerequisite
 * Create and write to file
