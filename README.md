@@ -17,6 +17,8 @@ This project is to make a simple program in C++ which would make a Progression T
 * Racial feats do not get there own category due to their only trait being mentioned in the prerequisites. They are in General or another mentioned category (i.e. Psionics).
 * Feats are only added if they have a chart in a book. (i.e. Monster's Manual)
   * The benefits section is left blank if the chart in the book does not include it (i.e. Book of Vile Darkness)
+* 3e feats in expansion books compatible with 3.5e are included
+* Feats specifically mentioned to be described in the Player's Handbook are ignored.
 
 ## [The Spreadsheet of Feats](https://docs.google.com/spreadsheets/d/1vyK6-p1zFmnogHBwQxzuOMt28dXvX11lcSF1YFZkCqw/edit?usp=sharing)
 
