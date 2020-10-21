@@ -5,6 +5,7 @@ title Feat Progression Chart
 
 skinparam componentStyle uml2
 class Feat_Name {
+  .. Feat Type ..
   .. Prerequisites ..
 -Prereq 1
 +Prereq 2
