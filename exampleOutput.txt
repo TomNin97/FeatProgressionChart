@@ -1,0 +1,33 @@
+@startuml
+
+title Feat Progression Chart
+
+
+skinparam componentStyle uml2
+class Feat_Name {
+  .. Prerequisites ..
+-Prereq 1
++Prereq 2
+#Prereq 3
+~Prereq 4
+
+  .. Benefits ..
+-This is an example of a very long benefit listing off a metric shitton of stuffs
+
+  .. Special ..
++Fighter Feat
+-Stackable
+
+  .. Source Book ..
++Players Handbook
+}
+
+Prereq_Feat --> Feat_Name
+Prereq_Feat2 --> Feat_Name
+Prereq_Feat3 --> Feat_Name
+
+class Prereq_Feat{
+  ..Prerequisites..
+  -Prereq 1
+}
+@enduml
