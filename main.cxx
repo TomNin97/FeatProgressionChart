@@ -14,7 +14,9 @@ int main()
 		std::string benefits;  // Description of benefits
 		std::vector<std::string> special;  // Special notes on feats
 		std::vector<std::string> sources;  // Source Books
-	}
+	};
+
+	std::vector<Feat> featList;
 
 	std::cout << "This the main code for the program" << std::endl;
 	return 0;
