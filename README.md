@@ -24,6 +24,7 @@ This project is to make a simple program in C++ which would make a Progression T
 * If a special claims it can be taken Multiple times, but does not specify stackable or not:
   * Mark it as stackable if it can be added to an item previously modified by the feat (i.e. spell or skill)
 * Due to scarcity and amazon reviewers reporting it as an unnecessary document that merely refers to other published books, ignore the Dungeon Survival Guide
+* If a book has repeated the feat in a chart under two catergories, the feat goes only on the page of the first category reported
 
 ## [The Spreadsheet of Feats](https://docs.google.com/spreadsheets/d/1vyK6-p1zFmnogHBwQxzuOMt28dXvX11lcSF1YFZkCqw/edit?usp=sharing)
 
