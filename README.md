@@ -4,7 +4,6 @@
 This project is to make a simple program in C++ which would make a Progression Tree for the Feats mechanic in Dungeons and Dragons Edition 3.5. This would achieve this by parsing a Comma-Separated Values document and outputting script that would make a UML diagram linking the Feats to their prerequisite Feats.
 
 ## How
-* Completing the spreadsheet by manually reading 3.5 Edition publications
 * Making the program read in Feats from CSV file
   * Placing information into a Feat structure
 * Verifying doubles of Feats do not exist (Notify user of source publications, verify they are same, request which description to use)
@@ -31,4 +30,4 @@ This project is to make a simple program in C++ which would make a Progression T
 ## Sources of 3.5 Edition Publication Lists
 * [Reddit Thread](https://www.reddit.com/r/DnD/comments/3d2ptm/complete_list_of_dnd_35_source_books/)
 * [Limited Downloadable Library](http://www.fillinsheets.com/pdfs/indexco.htm)
-* [List a Friend (& Experienced DM) Uses](http://dnd.arkalseif.info/rulebooks/editions/index.html)
+* [List a Friend (& Experienced DM) Has Used](http://dnd.arkalseif.info/rulebooks/editions/index.html)
