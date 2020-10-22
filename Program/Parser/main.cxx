@@ -5,6 +5,8 @@
 #include <ios>
 
 #include "Feats.h"
+#include "UML.h"
+#include "CSV.h"
 
 int main()
 {
@@ -20,12 +22,12 @@ int main()
 
 		if (input == 'i')
 		{
-			std::cout << "\nYou've selected input!" << std::endl;
+			csvParser(featList);
 		}
 
 		else if (input == 'o')
 		{
-			std::cout << "\nYou've selected output!" << std::endl;
+			umlTest();
 		}
 		
 		else if (input == 'x')

@@ -1,3 +1,6 @@
+#ifndef FEATS_H
+#define FEATS_H
+
 #include <string>
 #include <vector>
 
@@ -12,3 +15,5 @@ struct Feat
 		std::vector<std::string> special;  // Special notes on feats
 		std::vector<std::string> sources;  // Source Books
 	};
+
+#endif
