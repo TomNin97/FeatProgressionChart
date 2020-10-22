@@ -3,6 +3,10 @@
 ## About
 This project is to make a simple program in C++ which would make a Progression Tree for the Feats mechanic in Dungeons and Dragons Edition 3.5. This would achieve this by parsing a Comma-Separated Values document and outputting script that would make a UML diagram linking the Feats to their prerequisite Feats.
 
+## How-To
+1. Place csv files into Input folder.
+1. Create build directory and CMake Parser folder.
+
 ## Decisions
 * Racial feats do not get there own category due to their only trait being mentioned in the prerequisites. They are in General or another mentioned category (i.e. Psionics).
 * Feats are only added if they have a chart in a book. (i.e. Monster's Manual)

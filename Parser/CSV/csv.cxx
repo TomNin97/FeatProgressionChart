@@ -36,7 +36,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 	}
 	scribe.close();
 
-	std::cout << "\nYou have selected the file: " << fileName << std::endl;
+	std::cout << "\nYou have selected the file: " << fileName << "\nEnter to Continue" << std::endl;
 
 	return featList;
 }
