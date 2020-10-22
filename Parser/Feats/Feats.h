@@ -16,4 +16,6 @@ struct Feat
 		std::vector<std::string> sources;  // Source Books
 	};
 
+void printFeat(Feat);
+
 #endif

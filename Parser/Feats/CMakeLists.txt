@@ -1,1 +1,1 @@
-add_library(Feats INTERFACE)
+add_library(Feats feats.cxx)
