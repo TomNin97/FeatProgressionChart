@@ -33,7 +33,7 @@ int main()
 		else if (input == 'o')
 		{
 			featList = prereqSort(featList);
-			// decimate unnecessary prerequisites
+			featList = prereqDec(featList);
 			// export as uml
 		}
 

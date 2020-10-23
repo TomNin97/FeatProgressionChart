@@ -78,34 +78,52 @@ std::vector<Feat> prereqSort(std::vector<Feat> featList)
 	for (int i=0; i < featList.size(); i++)
 	{
 		std::cout << "\nStarting on feat: " << featList[i].name << std::endl;
-		if (!featList[i].genPrereq.empty()) // only if contents exist
+
+		for (j=0; j < featList[i].genPrereq.size(); j++)
 		{
-			for (j=0; j < featList[i].genPrereq.size(); j++)
+			wholeFeatName = featList[i].genPrereq[j];
+
+			if(wholeFeatName.find("(") != std::string::npos) // if parenthesis exist
 			{
-				wholeFeatName = featList[i].genPrereq[j];
+				name = wholeFeatName.substr(0, wholeFeatName.find("(")-1); // copies all except for the space and parenthesis object
+				shouldDelete = false; // dont delete prerequisite from original vector as it contains extra info
+			}
+			else
+			{
+				name = wholeFeatName; // copies whole string
+				shouldDelete = true; // delete from original vector if it is a recognized feat.
+			}
 
-				if(wholeFeatName.find("(") != std::string::npos) // if parenthesis exist
-				{
-					name = wholeFeatName.substr(0, wholeFeatName.find("(")-1); // copies all except for the space and parenthesis object
-					shouldDelete = false; // dont delete prerequisite from original vector as it contains extra info
-				}
-				else
-				{
-					name = wholeFeatName; // copies whole string
-					shouldDelete = true; // delete from original vector if it is a recognized feat.
-				}
+			location = locateFeat(featList, name);
 
-				location = locateFeat(featList, name);
-
-				if(location >= 0) // location exists. else move to next genPrerequisite
-				{
-					featList[i].featPrereq.push_back(featList[i].genPrereq[j]); // Adds to new location
-					if(shouldDelete){featList[i].genPrereq.erase(featList[i].genPrereq.begin() + j);} // erases old location
-				}
+			if(location >= 0) // location exists. else move to next genPrerequisite
+			{
+				featList[i].featPrereq.push_back(featList[i].genPrereq[j]); // Adds to new location
+				if(shouldDelete){featList[i].genPrereq.erase(featList[i].genPrereq.begin() + j);} // erases old location
 			}
 		}
 	}
 	return featList;
 }
 
-// std::vector<Feat> prereqDec(std::vector<Feat>);
+std::vector<Feat> prereqDec(std::vector<Feat> featList)
+{
+	std::cout << "\nWe then decimate redundant feats!" << std::endl;
+	int i;
+	int j;
+
+	for(i=0; i < featList.size(); i++)
+	{
+		std::cout << "\nStarting on feat: " << featList[i].name << std::endl;
+
+		if (!featList[i].featPrereq.empty())
+		{
+			for (j=0; j < featList[i].featPrereq.size(); j++)
+			{
+				//start search'n
+			}
+		}
+	}
+
+	return featList;
+}
