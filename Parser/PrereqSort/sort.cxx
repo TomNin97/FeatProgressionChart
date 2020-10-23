@@ -67,6 +67,37 @@ int locateFeat(std::vector<Feat> featList, std::string featName)
 	}
 }
 
+bool featChain(std::vector<Feat> featList, int featOrigin, std::string featPrereq)
+{
+	int i;
+	int loc;
+
+	if(featList[featOrigin].featPrereq.empty())
+	{
+		std::cout << "--- This feat (" << featList[featOrigin].name << ") empty, YEET!" << std::endl;
+		return false;
+	}
+
+	for(i=0; i < featList[featOrigin].featPrereq.size(); i++)
+	{
+		if(featList[featOrigin].featPrereq[i].compare(featPrereq) == 0) // discovered prerequisite in current feat
+		{
+			std::cout << "--- The prerequisite (" << featPrereq << ") was found in " << featList[featOrigin].name << std::endl;
+			return true;
+		}
+		loc = locateFeat(featList, featList[featOrigin].featPrereq[i]);
+
+		if(featChain(featList, loc, featPrereq)) // discovered prerequisite in prerequisite feat
+		{
+			std::cout << "--- ^The prerequisite was (" << featPrereq << ") was found down the chain." << std::endl;
+			return true;
+		}
+	}
+
+	std::cout << "Lots of searching with nothing of note." << std::endl;
+	return false; // thoroughly searched with no result
+}
+
 std::vector<Feat> prereqSort(std::vector<Feat> featList)
 {
 	int location;
@@ -109,19 +140,37 @@ std::vector<Feat> prereqSort(std::vector<Feat> featList)
 std::vector<Feat> prereqDec(std::vector<Feat> featList)
 {
 	std::cout << "\nWe then decimate redundant feats!" << std::endl;
-	int i;
-	int j;
+	int i; // iterate through the list of feats
+	int j; // iterate through preRequisites' prerequisites to compare
+	int k; // iterate what prerequisites are compared
+	int prereqX;
 
 	for(i=0; i < featList.size(); i++)
 	{
 		std::cout << "\nStarting on feat: " << featList[i].name << std::endl;
 
-		if (!featList[i].featPrereq.empty())
+		if(featList[i].featPrereq.size() > 1) // useless to go through with only 1 feat
 		{
 			for (j=0; j < featList[i].featPrereq.size(); j++)
 			{
-				//start search'n
+				std::cout << "Looking into prerequisite: " << featList[i].featPrereq[j] << std::endl;
+				for (k=0; k < featList[i].featPrereq.size(); k++)
+				{
+					if(k != j)
+					{
+						std::cout << "Comparing: " << featList[i].featPrereq[k] << std::endl;
+						if(featChain(featList, locateFeat(featList, featList[i].featPrereq[j]), featList[i].featPrereq[k])) // if k (as a prerequisite) is identified down the chain
+						{
+							std::cout << "Duplicate feat found! Removing from top-level prerequisites!" << std::endl;
+							featList[i].featPrereq.erase(featList[i].featPrereq.begin()+k); // removes that prerequisite
+						}
+					}
+				}
 			}
+		}
+		else
+		{
+			std::cout << "Not enough feats!" << std::endl;
 		}
 	}
 
