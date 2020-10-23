@@ -19,7 +19,7 @@ int main()
 	std::cout << "FEAT PROGRESSION CHART" << std::endl;
 	while(true)
 	{
-		std::cout << "Enter input (i), Process output (o), or Exit (x):" << std::endl;
+		std::cout << "Enter input (i), Process output (o), Print current (p), or Exit (x):" << std::endl;
 		std::cout << "-> ";
 		std::cin >> input;
 
@@ -28,13 +28,18 @@ int main()
 			featList = csvParser(featList);
 
 			featList = resolveDuplicates(featList);
-
-			printList(featList);
 		}
 
 		else if (input == 'o')
 		{
-			umlTest();
+			featList = prereqSort(featList);
+			// decimate unnecessary prerequisites
+			// export as uml
+		}
+
+		else if (input == 'p')
+		{
+			printList(featList);
 		}
 		
 		else if (input == 'x')

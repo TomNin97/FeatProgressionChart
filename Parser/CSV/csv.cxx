@@ -92,9 +92,13 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		inputFeat.sources.clear();
 
 		// Name
-		while(line[cursor] != ',')
+		while(line[cursor] != ',' || inQuotes)
 		{
-			readChar += line[cursor];
+			if(line[cursor] == '"'){inQuotes = !inQuotes;}
+			else
+			{
+				readChar += line[cursor];
+			}
 			cursor++;
 		}
 		inputFeat.name = readChar;

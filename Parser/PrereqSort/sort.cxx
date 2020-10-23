@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+#include "Feats.h"
 #include "PrereqSort.h"
 
 int locateFeat(std::vector<Feat> featList, std::string featName)
@@ -62,6 +67,55 @@ int locateFeat(std::vector<Feat> featList, std::string featName)
 	}
 }
 
-// std::vector<Feat> prereqSort(std::vector<Feat> featList)
+std::vector<Feat> prereqSort(std::vector<Feat> featList)
+{
+	int location;
+	std::string wholeFeatName;
+	std::string name;
+	bool shouldDelete;
+	int j;
+
+	for (int i=0; i < featList.size(); i++)
+	{
+		std::cout << "\nStarting on feat: " << featList[i].name << std::endl;
+		if (!featList[i].genPrereq.empty()) // only if contents exist
+		{
+			std::cout << "Entered the if statement" << std::endl; // Passes on the last statement
+			for (j=0; j < featList[i].genPrereq.size(); j++)
+			{
+				std::cout << "Reading prerequisite: " << featList[i].genPrereq[j] << std::endl; // Doesn't Pass for an unknown reason "bad_alloc"
+				wholeFeatName = featList[i].genPrereq[j];
+
+				if(wholeFeatName.find("(") != std::string::npos) // if parenthesis exist
+				{
+					name = wholeFeatName.substr(0, wholeFeatName.find("(")-1); // copies all except for the space and parenthesis object
+					shouldDelete = false; // dont delete prerequisite from original vector as it contains extra info
+				}
+				else
+				{
+					std::cout << "Reached correct branch." << std::endl;
+					name = wholeFeatName; // copies whole string
+					shouldDelete = true; // delete from original vector if it is a recognized feat.
+				}
+				std::cout << "Exited branch. Locating Feat." << std::endl;
+
+				location = locateFeat(featList, name);
+				std::cout << "Located Feat at: " << location << std::endl;
+
+				if(location >= 0) // location exists. else move to next genPrerequisite
+				{
+					featList[i].featPrereq.push_back(featList[i].genPrereq[j]); // Adds to new location
+					if(shouldDelete){featList[i].genPrereq.erase(featList[i].genPrereq.begin() + j);} // erases old location
+				}
+			}
+		}
+		else
+		{
+			std::cout << "No prerequisites!" << std::endl;
+		}
+		
+	}
+	return featList;
+}
 
 // std::vector<Feat> prereqDec(std::vector<Feat>);
