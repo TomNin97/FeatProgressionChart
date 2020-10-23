@@ -11,13 +11,14 @@ add_subdirectory(Feats)
 add_subdirectory(CSV)
 add_subdirectory(UML)
 add_subdirectory(Duplicates)
+add_subdirectory(PrereqSort)
 add_subdirectory(Input)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Input
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-list(APPEND LIBS "Feats" "UML" "CSV" "Duplicates")
-list(APPEND LOCATIONS "${PROJECT_SOURCE_DIR}/Feats" "${PROJECT_SOURCE_DIR}/UML" "${PROJECT_SOURCE_DIR}/CSV" "${PROJECT_SOURCE_DIR}/Duplicates" "${PROJECT_SOURCE_DIR}/Input")
+list(APPEND LIBS "Feats" "UML" "CSV" "Duplicates" "PrereqSort")
+list(APPEND LOCATIONS "${PROJECT_SOURCE_DIR}/Feats" "${PROJECT_SOURCE_DIR}/UML" "${PROJECT_SOURCE_DIR}/CSV" "${PROJECT_SOURCE_DIR}/Duplicates" "${PROJECT_SOURCE_DIR}/PrereqSort" "${PROJECT_SOURCE_DIR}/Input")
 
 add_executable(FeatChart main.cxx)
 

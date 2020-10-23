@@ -8,6 +8,7 @@
 #include "UML.h"
 #include "CSV.h"
 #include "Duplicates.h"
+#include "PrereqSort.h"
 
 int main()
 {
