@@ -80,10 +80,8 @@ std::vector<Feat> prereqSort(std::vector<Feat> featList)
 		std::cout << "\nStarting on feat: " << featList[i].name << std::endl;
 		if (!featList[i].genPrereq.empty()) // only if contents exist
 		{
-			std::cout << "Entered the if statement" << std::endl; // Passes on the last statement
 			for (j=0; j < featList[i].genPrereq.size(); j++)
 			{
-				std::cout << "Reading prerequisite: " << featList[i].genPrereq[j] << std::endl; // Doesn't Pass for an unknown reason "bad_alloc"
 				wholeFeatName = featList[i].genPrereq[j];
 
 				if(wholeFeatName.find("(") != std::string::npos) // if parenthesis exist
@@ -93,14 +91,11 @@ std::vector<Feat> prereqSort(std::vector<Feat> featList)
 				}
 				else
 				{
-					std::cout << "Reached correct branch." << std::endl;
 					name = wholeFeatName; // copies whole string
 					shouldDelete = true; // delete from original vector if it is a recognized feat.
 				}
-				std::cout << "Exited branch. Locating Feat." << std::endl;
 
 				location = locateFeat(featList, name);
-				std::cout << "Located Feat at: " << location << std::endl;
 
 				if(location >= 0) // location exists. else move to next genPrerequisite
 				{
@@ -109,11 +104,6 @@ std::vector<Feat> prereqSort(std::vector<Feat> featList)
 				}
 			}
 		}
-		else
-		{
-			std::cout << "No prerequisites!" << std::endl;
-		}
-		
 	}
 	return featList;
 }
