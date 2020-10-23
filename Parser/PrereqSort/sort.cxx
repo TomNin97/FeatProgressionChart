@@ -24,7 +24,7 @@ int locateFeat(std::vector<Feat> featList, std::string featName)
 				subList.push_back(featList[i]);
 			}
 
-			response = alphaOrder(subList, featName);
+			response = locateFeat(subList, featName);
 			if (response == -1)
 			{
 				return -1;
@@ -49,7 +49,7 @@ int locateFeat(std::vector<Feat> featList, std::string featName)
 				subList.push_back(featList[i]);
 			}
 
-			response = alphaOrder(subList, featName);
+			response = locateFeat(subList, featName);
 			if (response == -1)
 			{
 				return -1;
