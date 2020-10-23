@@ -18,4 +18,6 @@ struct Feat
 
 void printFeat(Feat);
 
+void printList(std::vector<Feat>);
+
 #endif

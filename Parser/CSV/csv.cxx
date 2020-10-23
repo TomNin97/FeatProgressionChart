@@ -8,6 +8,50 @@
 
 #include "Feats.h"
 
+int alphaOrder(std::vector<Feat> featList, std::string featName)
+{
+	int cmp = featList[featList.size()/2].name.compare(featName);
+	if(cmp == 0)
+	{
+		return featList.size()/2;
+	}
+	else if(cmp > 0)
+	{
+		if(featList.size()/2 == 0)
+		{
+			return 0;
+		}
+		else
+		{
+			// copy vector for recursive code
+			std::vector<Feat> subList;
+			for (int i = 0; i < featList.size()/2; i++)
+			{
+				subList.push_back(featList[i]);
+			}
+
+			return alphaOrder(subList, featName);
+		}
+	}
+	else
+	{
+		if(featList.size()/2 == 0)
+		{
+			return 1;
+		}
+		else
+		{
+			std::vector<Feat> subList;
+			for (int i = (featList.size()/2); i < featList.size(); i++)
+			{
+				subList.push_back(featList[i]);
+			}
+
+			return alphaOrder(subList, featName) + (featList.size()/2);
+		}
+	}
+}
+
 std::vector<Feat> csvParser(std::vector<Feat> featList)
 {
 	std::string fileName;
@@ -17,6 +61,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 	std::string readChar;
 	int cursor;
 	bool inQuotes;
+	int placing;
 
 	/* Input file name */
 	std::cout << "\n\nPlease enter the file name. Extension is added by default:\n-> ";
@@ -94,7 +139,6 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 			readChar.clear();
 			cursor++;
 		}
-		std::cout << "\nNext feat started" << std::endl;
 
 		// Special
 		if(line[cursor] == ','){cursor++;} // Skips if no recorded special notes
@@ -127,9 +171,24 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		readChar.clear();
 		cursor++;
 
-		printFeat(inputFeat);
-
 		/* Locate position in vector */
+		if(featList.empty())
+		{
+			featList.push_back(inputFeat);
+		}
+		else
+		{
+			placing = alphaOrder(featList, inputFeat.name);
+
+			if(placing == featList.size())
+			{
+				featList.push_back(inputFeat);
+			}
+			else
+			{
+				featList.insert(featList.begin() + placing, inputFeat);
+			}
+		}
 	}
 
 	std::cout << "\nClosing File" << std::endl;
@@ -139,3 +198,4 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 
 	return featList;
 }
+

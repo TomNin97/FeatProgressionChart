@@ -21,3 +21,13 @@ void printFeat(Feat output)
 
 	std::cout << "Feat Book: " << output.sources[0] << std::endl;
 }
+
+void printList(std::vector<Feat> featList)
+{
+	std::cout << "\nCURRENT LIST:" << std::endl;
+	for (int i = 0; i < featList.size(); i++)
+	{
+		printFeat(featList[i]);
+	}
+	std::cout << "DONE! Press Enter to Continue" << std::endl;
+}

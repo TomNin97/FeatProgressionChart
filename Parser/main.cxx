@@ -11,6 +11,7 @@
 int main()
 {
 	std::vector<Feat> featList;
+	featList.clear();
 	char input;
 
 	std::cout << "FEAT PROGRESSION CHART" << std::endl;
@@ -22,7 +23,9 @@ int main()
 
 		if (input == 'i')
 		{
-			csvParser(featList);
+			featList = csvParser(featList);
+
+			printList(featList);
 		}
 
 		else if (input == 'o')
