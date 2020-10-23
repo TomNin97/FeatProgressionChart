@@ -7,6 +7,7 @@
 #include "Feats.h"
 #include "UML.h"
 #include "CSV.h"
+#include "Duplicates.h"
 
 int main()
 {
@@ -25,7 +26,7 @@ int main()
 		{
 			featList = csvParser(featList);
 
-			printList(featList);
+			resolveDuplicates(featList);
 		}
 
 		else if (input == 'o')
