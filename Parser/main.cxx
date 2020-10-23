@@ -26,7 +26,9 @@ int main()
 		{
 			featList = csvParser(featList);
 
-			resolveDuplicates(featList);
+			featList = resolveDuplicates(featList);
+
+			printList(featList);
 		}
 
 		else if (input == 'o')

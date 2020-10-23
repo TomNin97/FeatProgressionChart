@@ -19,7 +19,9 @@ void printFeat(Feat output)
 	for(int i=0; i < output.special.size(); i++){std::cout << output.special[i] << ", ";}
 	std::cout << ')' << std::endl;
 
-	std::cout << "Feat Book: " << output.sources[0] << std::endl;
+	std::cout << "Feat Book: (";
+	for(int i=0; i < output.sources.size(); i++){std::cout << output.sources[i] << ", ";}
+	std::cout << ')' << std::endl;
 }
 
 void printList(std::vector<Feat> featList)
