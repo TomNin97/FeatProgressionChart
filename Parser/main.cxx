@@ -34,7 +34,7 @@ int main()
 		{
 			featList = prereqSort(featList);
 			featList = prereqDec(featList);
-			// export as uml
+			umlOut(featList);
 		}
 
 		else if (input == 'p')

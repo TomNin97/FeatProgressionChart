@@ -23,11 +23,11 @@ class Feat_Name {
 +Players Handbook
 }
 
-Prereq_Feat --> Feat_Name
+"Prereq Feat" --> Feat_Name
 Prereq_Feat2 --> Feat_Name
 Prereq_Feat3 --> Feat_Name
 
-class Prereq_Feat{
+class "Prereq Feat"{
   ..Prerequisites..
   -Prereq 1
 }
