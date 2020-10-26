@@ -105,7 +105,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList, bool feed)
 		inputFeat.sources.clear();
 
 		// Name
-		if(feed){std::cout << "Parsing the name for the feat: "}
+		if(feed){std::cout << "Parsing the name for the feat: ";}
 		while(line[cursor] != ',' || inQuotes)
 		{
 			if(line[cursor] == '"'){inQuotes = !inQuotes;}
