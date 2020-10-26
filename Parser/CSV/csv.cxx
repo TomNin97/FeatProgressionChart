@@ -7,22 +7,31 @@
 #include <cstdio>
 
 #include "Feats.h"
+#include "CSV.h"
 
-int alphaOrder(std::vector<Feat> featList, std::string featName)
+int alphaOrder(std::vector<Feat> featList, std::string featName, bool feed)
 {
 	int cmp = featList[featList.size()/2].name.compare(featName);
+	if(feed){std::cout << "\nComparing feat: " << featName << "\nTo feat: " << featList[cmp].name << std::endl;}
+
+	/* For if the comparison is the same */
 	if(cmp == 0)
 	{
+		if(feed){std::cout << "There is nothing here!" << std::endl;}
 		return featList.size()/2;
 	}
+
+	/* For if the featName is less than current feat */
 	else if(cmp > 0)
 	{
 		if(featList.size()/2 == 0)
 		{
+			if(feed){std::cout << featName << " is smaller! Returning 0" << std::endl;}
 			return 0;
 		}
 		else
 		{
+			if(feed){std::cout << featName << " is smaller! Going down the rabbithole..." << std::endl;}
 			// copy vector for recursive code
 			std::vector<Feat> subList;
 			for (int i = 0; i < featList.size()/2; i++)
@@ -33,14 +42,18 @@ int alphaOrder(std::vector<Feat> featList, std::string featName)
 			return alphaOrder(subList, featName);
 		}
 	}
+
+	/* For if the featName is greater than current feat */
 	else
 	{
 		if(featList.size()/2 == 0)
 		{
+			if(feed){std::cout << featName << " is larger! Returning 1" << std::endl;}
 			return 1;
 		}
 		else
 		{
+			if(feed){std::cout << featName << " is larger! Going up the rabbithole..." << std::endl;}
 			std::vector<Feat> subList;
 			for (int i = (featList.size()/2); i < featList.size(); i++)
 			{
@@ -52,7 +65,7 @@ int alphaOrder(std::vector<Feat> featList, std::string featName)
 	}
 }
 
-std::vector<Feat> csvParser(std::vector<Feat> featList)
+std::vector<Feat> csvParser(std::vector<Feat> featList, bool feed)
 {
 	std::string fileName;
 	Feat inputFeat;
@@ -92,6 +105,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		inputFeat.sources.clear();
 
 		// Name
+		if(feed){std::cout << "Parsing the name for the feat: "}
 		while(line[cursor] != ',' || inQuotes)
 		{
 			if(line[cursor] == '"'){inQuotes = !inQuotes;}
@@ -101,12 +115,14 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 			}
 			cursor++;
 		}
+		if(feed){std::cout << readChar << std::endl;}
 		inputFeat.name = readChar;
 		readChar.clear();
 		cursor++;
 
 		// Prerequisites
-		if(line[cursor] == '-'){cursor += 2;} // No prerequisites: skip nexxt loop
+		if(feed){std::cout << "Parsing prerequisites." << std::endl;}
+		if(line[cursor] == '-'){cursor += 2;} // No prerequisites: skip next loop 
 		else
 		{
 			while(line[cursor] != ',' || inQuotes)
@@ -127,6 +143,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		}
 
 		// Benefits
+		if(feed){std::cout << "Parsing benefits." << std::endl;}
 		if(line[cursor] == ','){cursor++;} // Skips if no recorded benefits
 		else
 		{
@@ -145,6 +162,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		}
 
 		// Special
+		if(feed){std::cout << "Parsing specials." << std::endl;}
 		if(line[cursor] == ','){cursor++;} // Skips if no recorded special notes
 		else
 		{
@@ -166,6 +184,7 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		}
 
 		// Source Book
+		if(feed){std::cout << "Parsing source books." << std::endl;}
 		while(line[cursor] != ',')
 		{
 			readChar += line[cursor];
@@ -176,10 +195,8 @@ std::vector<Feat> csvParser(std::vector<Feat> featList)
 		cursor++;
 
 		/* Locate position in vector */
-		if(featList.empty())
-		{
-			featList.push_back(inputFeat);
-		}
+		if(feed){std::cout << "Finding spot for feat in list" << std::endl;}
+		if(featList.empty()){featList.push_back(inputFeat);}
 		else
 		{
 			placing = alphaOrder(featList, inputFeat.name);
