@@ -51,7 +51,7 @@ void umlOut(std::vector<Feat> featList)
 		/* Class Relations */
 		for(j=0; j<featList[i].featPrereq.size(); j++)
 		{
-			scribe << "\"" << featList[i].name << "\" --> \"" << featList[i].featPrereq[j] << "\"\n";
+			scribe << "\"" << featList[i].featPrereq[j] << "\" --> \"" << featList[i].name << "\"\n";
 		}
 	}
 

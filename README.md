@@ -6,6 +6,8 @@ This project is to make a simple program in C++ which would make a Progression T
 ## How-To
 1. Place csv files into Input folder.
 1. Create build directory and CMake Parser folder.
+1. open cmd and navigate to <build folder>/Output
+  1. java -jar plantuml.jar -verbose -tsvg uml.txt
 
 ## Decisions
 * Racial feats do not get there own category due to their only trait being mentioned in the prerequisites. They are in General or another mentioned category (i.e. Psionics).
