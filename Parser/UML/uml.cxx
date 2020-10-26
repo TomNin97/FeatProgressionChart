@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Feats.h"
 
-void umlOut(std::vector<Feat> featList)
+void umlOut(std::vector<Feat> featList, bool feed)
 {
 	std::fstream scribe;
 	int i; // iterate feats
@@ -22,6 +22,7 @@ void umlOut(std::vector<Feat> featList)
 
 	for(i=0; i < featList.size(); i++) // iterates through feats
 	{
+		if(feed){std::cout << "\nScripting data for: " << featList[i].name << std::endl;}
 		scribe << "\nclass \"" << featList[i].name << "\" {\n"; // gives feat name
 		scribe << "  .. " << featList[i].type << " ..\n"; // gives feat type
 
