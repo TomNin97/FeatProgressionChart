@@ -5,13 +5,15 @@
 #include "Duplicates.h"
 #include "Feats.h"
 
-std::vector<Feat> resolveDuplicates(std::vector<Feat> featList)
+std::vector<Feat> resolveDuplicates(std::vector<Feat> featList, bool feed)
 {
+	if(feed){std::cout << "\nResolving Duplicates" << std::endl;}
 	int cursor = 0;
 	std::string decision;
 
 	while(cursor < featList.size())
 	{
+		if(feed){std::cout << "Comparing " << featList[cursor].name << " to " << featList[cursor+1].name << std::endl;}
 		if(featList[cursor].name.compare(featList[cursor+1].name) == 0)
 		{
 			while(true)

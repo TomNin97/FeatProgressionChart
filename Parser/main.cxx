@@ -32,7 +32,7 @@ int main()
 
 		else if (input == 'o')
 		{
-			featList = prereqSort(featList);
+			featList = prereqSort(featList, true);
 			featList = prereqDec(featList);
 			umlOut(featList);
 		}
